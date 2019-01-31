@@ -62,10 +62,10 @@ $(document).ready(function(){
           }).then(function(response){
               console.log(response);
 
-            $("#temperature").append("<br>"+week[0]+"<p> Temp(F): "+response.list[0].main.temp+" Weather: "+response.list[0].weather[0].description+"</p><br>"+
-            "<br>"+week[1]+"<p> Temp(F): "+response.list[5].main.temp+" Weather: "+response.list[4].weather[0].description+"</p><br>"+
-            "<br>"+week[2]+"<p> Temp(F): "+response.list[10].main.temp+" Weather: "+response.list[8].weather[0].description+"</p><br>"+
-            "<br>"+week[3]+"<p> Temp(F): "+response.list[15].main.temp+" Weather: "+response.list[12].weather[0].description+"</p>");
+            $("#temperature").append("<br><br>"+week[0]+"<p> Temp(F): "+response.list[0].main.temp+"<br> Weather: "+response.list[0].weather[0].description+"</p><br>"+
+            "<br>"+week[1]+"<p> Temp(F): "+response.list[5].main.temp+"<br>Weather: "+response.list[5].weather[0].description+"</p><br>"+
+            "<br>"+week[2]+"<p> Temp(F): "+response.list[10].main.temp+"<br>Weather: "+response.list[10].weather[0].description+"</p><br>"+
+            "<br>"+week[3]+"<p> Temp(F): "+response.list[15].main.temp+"<br>Weather: "+response.list[15].weather[0].description+"</p>");
 
       })
               var d = new Date();
