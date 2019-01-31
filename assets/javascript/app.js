@@ -52,26 +52,36 @@ $(document).ready(function(){
 
           // Weather --------------------------------------------------------------------
 
+          // url with API key to retreive forecast, city as variable and units fixed as imperial
           var weather = "https://api.openweathermap.org/data/2.5/forecast?q="+encodeURIComponent(input)+"&units=imperial&APPID=2c5299d78f7bf581a1a4bccad14eaddf";
-          var today = "";
+          
+          // universal array to alocate today and next days of the week
           var week = [];
 
+          // Ajax call for weather API
           $.ajax({
               url: weather,
               method: "GET"
           }).then(function(response){
+              // forecast for next five days as object, predictions are every three hours
               console.log(response);
 
-            $("#temperature").append("<br><br>"+week[0]+"<p> Temp(F): "+response.list[0].main.temp+"<br> Weather: "+response.list[0].weather[0].description+"</p><br>"+
-            "<br>"+week[1]+"<p> Temp(F): "+response.list[5].main.temp+"<br>Weather: "+response.list[5].weather[0].description+"</p><br>"+
-            "<br>"+week[2]+"<p> Temp(F): "+response.list[10].main.temp+"<br>Weather: "+response.list[10].weather[0].description+"</p><br>"+
-            "<br>"+week[3]+"<p> Temp(F): "+response.list[15].main.temp+"<br>Weather: "+response.list[15].weather[0].description+"</p>");
+            // print forecast as table for today and next four days as table, using prediction for each 24 hours
+            // print forecast image using same images from font
+            $("#weather").append("<table><tr><td>"+week[0]+"<p> Temp(F): "+response.list[0].main.temp+"<br>Weather: "+response.list[0].weather[0].main+
+            "</p><br><img src='http://openweathermap.org/img/w/"+response.list[0].weather[0].icon+".png'></td><td>"+week[1]+"<p> Temp(F): "+response.list[8].main.temp+"<br>Weather: "+
+            response.list[8].weather[0].main+"</p><br><img src='http://openweathermap.org/img/w/"+response.list[8].weather[0].icon+".png'></td><td>"+week[2]+"<p> Temp(F): "+response.list[16].main.temp
+            +"<br>Weather: "+response.list[16].weather[0].main+"</p><br><img src='http://openweathermap.org/img/w/"+response.list[16].weather[0].icon+".png'></td><td>"+week[3]+"<p> Temp(F): "+
+            response.list[24].main.temp+"<br>Weather: "+response.list[24].weather[0].main+"</p><br><img src='http://openweathermap.org/img/w/"+response.list[24].weather[0].icon+".png'></td><td>"+week[4]+"<p> Temp(F): "+
+            response.list[32].main.temp+"<br>Weather: "+response.list[32].weather[0].main+"</p><br><img src='http://openweathermap.org/img/w/"+response.list[32].weather[0].icon+".png'></td></tr></table>");
 
       })
+
+            // get current day and determine next days in order
               var d = new Date();
               var n = d.getDay();
 
-                  
+                // depending current day, use corresponding week array
                   switch(n) {
                   case 0:
                       week = ["Sunday", "Monday",  "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
