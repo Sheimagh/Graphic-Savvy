@@ -49,6 +49,55 @@ $(document).ready(function(){
                 $("#searchBar").append(searchResultsBtn);
             }
           })
+
+          // Weather --------------------------------------------------------------------
+
+          var weather = "https://api.openweathermap.org/data/2.5/forecast?q="+encodeURIComponent(input)+"&units=imperial&APPID=2c5299d78f7bf581a1a4bccad14eaddf";
+          var today = "";
+          var week = [];
+
+          $.ajax({
+              url: weather,
+              method: "GET"
+          }).then(function(response){
+              console.log(response);
+
+            $("#temperature").append("<br>"+week[0]+"<p> Temp(F): "+response.list[0].main.temp+" Weather: "+response.list[0].weather[0].description+"</p><br>"+
+            "<br>"+week[1]+"<p> Temp(F): "+response.list[5].main.temp+" Weather: "+response.list[4].weather[0].description+"</p><br>"+
+            "<br>"+week[2]+"<p> Temp(F): "+response.list[10].main.temp+" Weather: "+response.list[8].weather[0].description+"</p><br>"+
+            "<br>"+week[3]+"<p> Temp(F): "+response.list[15].main.temp+" Weather: "+response.list[12].weather[0].description+"</p>");
+
+      })
+              var d = new Date();
+              var n = d.getDay();
+
+                  
+                  switch(n) {
+                  case 0:
+                      week = ["Sunday", "Monday",  "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+                  break
+                  case 1:
+                      week = ["Monday",  "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+                  break
+                  case 2: 
+                      week = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday"]
+                  break
+                  case 3: 
+                      week = ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday",  "Tuesday"]
+                  break
+                  case 4: 
+                      week = ["Thursday", "Friday", "Saturday", "Sunday", "Monday",  "Tuesday", "Wednesday"]
+                  break
+                  case 5:
+                      week = ["Friday", "Saturday", "Sunday", "Monday",  "Tuesday", "Wednesday", "Thursday"]
+                  break
+                  case 6:
+                  week = ["Saturday", "Sunday", "Monday",  "Tuesday", "Wednesday", "Thursday", "Friday"]
+                  break
+              } 
+          })
+
+
         })
 
 
@@ -105,4 +154,3 @@ $(document).ready(function(){
           
     
   
-})
