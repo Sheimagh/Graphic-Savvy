@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Juant Homepage</title>
     <link rel="shortcut icon" type="assets/png" href="assets/images/Favicon-01.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="reset" href="assets/css/reset.css">
     <link href="assets/css/style.css" rel="stylesheet">
@@ -14,24 +14,19 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
 </head>
 <body>
     <!-- Jumbotron Image -->
     <!-- temporary Jumbotron image since buttons are apart of the img and not functional yet -->
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
+    <div class="container">
+            <div class="jumbotron jumbotron-fluid">
                 <div class="row justify-content-center">
                     <div class="col-sm-6 btn-holder">
                     </div>
                     <div class="col-sm-6"> 
                         <!-- <img src="assets/images/Destination Button-01.png" class="destination-button"> -->
                         <!-- line breaks used to help fit the background-image as the jumbotron otherwise wouldnt fit -->
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br>
                         <!-- <p>
                             <p>
                                 <div class="dropdown">
@@ -45,6 +40,11 @@
                                 </div>
                             </p> -->
                     <!-- </div> -->
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                         <br />
                         <br />
                         <br />
@@ -64,15 +64,16 @@
     <!-- How much? Average Cost Display Button; Travel Style Button; Currency Converter Button -->
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xs-12 col-sm-12 text-center">
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <!-- Class: weather-card -->
                     <br>
                     <div class="weather-card">
-                        <div class="card text-white bg-warning mb-3 text-center" style="width: 22rem;">
+                        <div class="card text-white bg-warning mb-3 text-center">
                             <div class="card-header">Weather</div>
                                 <div class="card-body">
                                     <h5 class="card-title">Temperature</h5>
                                     <p class="card-text text-white">Weather description</p>
+                                    <br>
                             </div>
                         </div>
                     </div>  
@@ -80,109 +81,113 @@
             </div>
         </div>
         <br>
-        <br>
     <!-- How expensive Button displays -->
         <hr>
         <br>
-        <div class="container">
-            <!-- "..." should be the city input 
-            the class for the cards is sightSeeing and avgCostDisplay-->
-            <h2> How expensive is <span id="city"> Chicago</span>?</h2>
-            <br>
-            <div class="row justify-content-center">
-                <div class="col-xs-12 col-sm-4 text-center">  
-                    <div class="sightSeeing">
-                        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Average Cost of Attractions</div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Sight Seeing</h5>
-                                    <p class="card-text-price">$</p>
+            <!-- "..." should be the city input the class for the cards is sightSeeing and avgCostDisplay-->
+        <div class="container justify-content-center">
+            <h3> How expensive is <span id="city"></span>?</h3>
+                    <div class="row justify-content-center">
+                        <div class="col-xs-12 col-sm-6 col-md-3 text-center">  
+                            <div class="sightSeeing">
+                                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Food</div>
+                                        <div class="card-body">
+                                            <h4 class="card-title"></h4>
+                                            <p class="card-text-price"><span><ul id="budgt-txt"><li id="foodTxt"></li></ul></span></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4 text-center">  
-                    <div class="avgCostDisplay">
-                        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Average Cost Display</div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Per person per day</h5>
-                                    <p class="card-text-price">$</p>
+                        <div class="col-xs-12 col-sm-6 col-md-3 text-center">  
+                            <div class="avgCostDisplay">
+                                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                                    <div class="card-header">Average Cost Display</div>
+                                        <div class="card-body">
+                                            <h4 class="card-title"><span id="avgCostDisplay"></span></h4>
+                                            <h7 class="card-text-price"><span id="avgCostDisplayTxt"></span></h7>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- class travel style-button  -->
-                <div class="col-sm-4 text">  
-                    <div class="travel-button"> 
-                        <h4>Travel Style</h4>
-                        <br>
-                            <select class="browser-default custom-select">
-                                <option selected="0">Budget</option>
-                                <option value="1">Midrange</option>
-                                <option value="2">Luxury</option>
-                            </select>
-                    </div>
-                    <!-- class currency-button -->
-                    <div class="currency-button">
-                        <br>
-                        <h4>Currency Converter</h4>
-                        <br>
-                            <select class="browser-default custom-select">
+                        <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
+                            <div class="accommodations">
+                                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"> Accomodations </div>
+                                        <div class="card-body">
+                                            <h4 class="card-title"></h4>
+                                            <p class="card-text-price"><span><ul id="budgt-txt"><li id="accom"></li></ul></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- class travel style-button  -->
+                                <div class="col-md-3 col-sm-6  text">  
+                                    <div class="travel-button"> 
+                                        <h4>Travel Style</h4>
+                                        <select class="browser-default custom-select" id="travelStyle">
+                                            <option id="travelstyle" selected="0">Budget</option>
+                                            <option id="travelstyle">Midrange</option>
+                                            <option id="travelstyle">Luxury</option>
+                                        </select>
+                                    </div>
+                            <!-- class currency-button -->
+                                    <div class="currency-button">
+                                        <h4>Currency Converter</h4>
+                                            <select class="browser-default custom-select">
                                 <!-- Possible to add a dynamically created options of currencies? -->
-                                <option selected="0">USD</option>
-                                <option value="1">EUR</option>
-                                <option value="2">CAD</option>
-                            </select>
+                                            <option selected="0">USD</option>
+                                            <option value="1">EUR</option>
+                                            <option value="2">CAD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <br>
+                <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
+                    <div class="attractions">
+                        <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
+                        <div class="card-header"> Attractions </div>
+                            <div class="card-body">
+                                <h3 class="card-title"></h3>
+                                <p class="card-text-price"><span><ul><li id="attractionTxt"></li></ul></span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <br>
-            <br>
-            <div class="row justify-content-center">
-                <!-- class for $ is "card-text-price" -->
-                <div class="accommodations">
-                    <div class="col-sm text-center card bg-light mb-3" style="max-width: 14rem;">
-                        <div class="card-header"> Accomodations </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Hotel or hostel for one person</h5>
-                                <p class="card-text-price">$</p>
-                             </div>
-                        </div>
-                </div>
-                <div class="food">
-                    <div class="col-sm text-center card bg-light mb-3" style="max-width: 14rem;">
-                        <div class="card-header"> Food </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Meals for one day</h5>
-                                <p class="card-text-price">$</p>
+                <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
+                    <div class="transportation">
+                        <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header"> Transportation </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"></h3>
+                                    <p class="card-text-price"><ul id="budgt-txt"><li id="transportTxt"></li></ul></p>
+                                </div>
                             </div>
                         </div>
-                </div>
-                <div class="transportation">
-                    <div class="col-sm text-center card bg-light mb-3" style="max-width: 14rem;">
-                        <div class="card-header"> Local Transportation </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Taxis, buses, transit</h5>
-                                <p class="card-text-price">$</p>
+                    </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
+                    <div class="enterainment">
+                        <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header"> Entertainment </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"></h3>
+                                    <p class="card-text-price"><ul id="budgt-txt"><li id="entertainTxt"></li></ul></p>
                             </div>
                         </div>
+                    </div>
                 </div>
-                <div class="entertainment">
-                    <div class="col-sm text-center card bg-light mb-3" style="max-width: 14rem;">
-                        <div class="card-header"> Entertainment </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Shows, cover chargers</h5>
-                                <p class="card-text-price">$</p>
+                <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
+                    <div class="alcohol">
+                        <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header"> Alcohol </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"></h3>
+                                    <p class="card-text-price"><ul id="budgt-txt"><li id="alcoholTxt"></li></ul></p>
                             </div>
-                        </div>
-                </div>
-                <div class="alcohol">
-                    <div class="col-sm text-center card bg-light mb-3" style="max-width: 14rem;">
-                        <div class="card-header"> Alcohol </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Drinks for a day for one person</h5>
-                                <p class="card-text-price">$117.82</p>
                         </div>
                     </div>
                 </div>
@@ -190,27 +195,9 @@
         </div>
     <br>   
     <br>
-    <hr>
-    <br>
-    <div class="containter text-center">
-        <div class="row text-center">
-            <div class="col-xs-12 col-sm-6 col-m-6 video">
-                    <h1></h1>
-                    <img src="assets/images/placeholder.jpg" data-video="" height="330px" width="550px">
-                <div id="youtube"></div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-m-6 video">
-                    <h1></h1>
-                    <img src="assets/images/placeholder.jpg" data-video="" height="330px" width="550px">
-                <div id="youtube"></div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
+
 
     <script src="assets/javascript/app.js"></script>
-    
     
 </body>
 </html>
