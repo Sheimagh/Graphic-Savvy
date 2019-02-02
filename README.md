@@ -5,7 +5,7 @@ A Web Application that uses the Budget your Trip API to give users a budget rang
 
 https://sheimagh.github.io/Graphic-Savvy/index.html
 
-[embed]https://drive.google.com/open?id=1I9W3L4kyzFJGJ5WpY7kAWX8Cu2UVkpNE[/embed]
+[embed]file:///C:/Users/infos/Desktop/Bootcamp/Assignments/Project%201/Source/Graphic-Savvy%20Presentation.pdf[/embed]
 
 
 [<img src="assets/images/Jauntscreenshot.PNG">](https://sheimagh.github.io/Graphic-Savvy/index.html)
