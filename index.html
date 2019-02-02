@@ -10,147 +10,138 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="reset" href="assets/css/reset.css">
     <link href="assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
     <!-- Jumbotron Image -->
     <!-- temporary Jumbotron image since buttons are apart of the img and not functional yet -->
     <div class="container">
-            <div class="jumbotron jumbotron-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-sm-6 btn-holder">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-md-offset-3"> 
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <!-- Search form -->
+                    <!-- id= searchbar -->
+                    <div id="searchbar ">
+                        <form class="form-inline" id="searchBar">
+                            <input class="form-control form-control-sm ml-4 w-50" type="text" placeholder="Search city here" aria-label="Search" id="userInput">
+                            <button class="button btn-sm" type="submit" id="submit">Search</button>
+                            <!-- <i class="fas fa-search"></i> -->
+                        </form>
                     </div>
-                    <div class="col-sm-6"> 
-                        <!-- <img src="assets/images/Destination Button-01.png" class="destination-button"> -->
-                        <!-- line breaks used to help fit the background-image as the jumbotron otherwise wouldnt fit -->
-                        <!-- <p>
-                            <p>
-                                <div class="dropdown">
-                                    <button class="btn bg-primary dropdown-toggle" type="button" id="submit" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" style="width: 18rem;">
-                                        Search
-                                    </button>
-                                <div id="menu" class="dropdown-menu">
-                                    <form class="px-4 py-2">
-                                        <input type="search" class="form-control dropdown-toggle"  autofocus="autofocus">
-                                </div>
-                            </p> -->
-                    <!-- </div> -->
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <!-- Search form -->
-                        <!-- id= searchbar -->
-                        <div id="searchbar">
-                            <form class="form-inline" id="searchBar">
-                                <input class="form-control form-control-sm ml-4 w-50" type="text" placeholder="Search" aria-label="Search" id="userInput">
-                                <button class="button btn-lg" type="submit" id="submit">Search</button>
-                                <i class="fas fa-search"></i>
-                            </form>
-                        </div>
-                    </div>
+                    <br />
+                    <br />
+                    <br />
                 </div>
             </div>
         </div>
+    </div>
     <!-- How much? Average Cost Display Button; Travel Style Button; Currency Converter Button -->
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <!-- Class: weather-card -->
-                    <br>
-                    <div class="weather-card">
-                        <div class="card text-white bg-warning mb-3 text-center">
-                            <div class="card-header">Weather</div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Temperature</h5>
-                                    <p class="card-text text-white">Weather description</p>
-                                    <br>
-                            </div>
-                        </div>
-                    </div>  
-                </div> 
-            </div>
-        </div>
-        <br>
-    <!-- How expensive Button displays -->
-        <hr>
-        <br>
-            <!-- "..." should be the city input the class for the cards is sightSeeing and avgCostDisplay-->
-        <div class="container justify-content-center">
-            <h3> How expensive is <span id="city"></span>?</h3>
-                    <div class="row justify-content-center">
-                        <div class="col-xs-12 col-sm-6 col-md-3 text-center">  
-                            <div class="sightSeeing">
-                                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Food</div>
-                                        <div class="card-body">
-                                            <h4 class="card-title"></h4>
-                                            <p class="card-text-price"><span><ul id="budgt-txt"><li id="foodTxt"></li></ul></span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-3 text-center">  
-                            <div class="avgCostDisplay">
-                                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Average Cost Display</div>
-                                        <div class="card-body">
-                                            <h4 class="card-title"><span id="avgCostDisplay"></span></h4>
-                                            <h7 class="card-text-price"><span id="avgCostDisplayTxt"></span></h7>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
-                            <div class="accommodations">
-                                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                                    <div class="card-header"> Accomodations </div>
-                                        <div class="card-body">
-                                            <h4 class="card-title"></h4>
-                                            <p class="card-text-price"><span><ul id="budgt-txt"><li id="accom"></li></ul></span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            <!-- class travel style-button  -->
-                                <div class="col-md-3 col-sm-6  text">  
-                                    <div class="travel-button"> 
-                                        <h4>Travel Style</h4>
-                                        <select class="browser-default custom-select" id="travelStyle">
-                                            <option id="travelstyle" selected="0">Budget</option>
-                                            <option id="travelstyle">Midrange</option>
-                                            <option id="travelstyle">Luxury</option>
-                                        </select>
-                                    </div>
-                            <!-- class currency-button -->
-                                    <div class="currency-button">
-                                        <h4>Currency Converter</h4>
-                                            <select class="browser-default custom-select">
-                                <!-- Possible to add a dynamically created options of currencies? -->
-                                            <option selected="0">USD</option>
-                                            <option value="1">EUR</option>
-                                            <option value="2">CAD</option>
-                                        </select>
-                                    </div>
-                                </div>
+    <div id="content">
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center weatherBgrd">
+                <!-- Class: weather-card -->
+                <br>
+                <div class="weather-card">
+                    <div class="card text-white bg-warning mb-3 text-center">
+                        <div class="card-header bg-warning text-white"><h3>Weather for <span class="city"></span></h3></div>
+                            <div class="card-body bg-warning">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text text-white" id="weather"></p>
+                                <br>
                         </div>
                     </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <!-- How expensive Button displays -->
+        <div class="container">
+            <h3> How expensive is <span class="city"></span>?</h3>
+            <br><br>
+            <div class="row justify-content-center">
+                <div class="col-xs-12 col-sm-6 col-md-3 text-center">  
+                        <div class="avgCostDisplay">
+                            <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
+                                <div class="card-header text-white bg-primary">Average Daily Cost</div>
+                                    <div class="card-body">
+                                        <h7 class="card-title"><span id="avgCostDisplayTxt"></span></h7>
+                                        <!-- <p class="card-text-price"><span><ul id="budgt-txt"><li id="avgCostDisplay"></li></ul></span></p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 text-center">  
+                    <div class="sightSeeing">
+                        <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header text-white bg-primary">Food</div>
+                                <div class="card-body">
+                                    <h4 class="card-title"></h4>
+                                    <p class="card-text-price"><span><ul id="budgt-txt"><li id="foodTxt"></li></ul></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
+                    <div class="accommodations">
+                        <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header text-white bg-primary"> Accomodations </div>
+                                <div class="card-body">
+                                    <h4 class="card-title"></h4>
+                                    <p class="card-text-price"><span><ul id="budgt-txt"><li id="accom"></li></ul></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- class travel style-button  -->
+                        <div class="col-md-3 col-sm-6  text">  
+                            <div class="travel-button text-primary"> 
+                                <h5>Travel Style</h5>
+                                <select class="browser-default custom-select select" id="travelStyle">
+                                    <option id="travelstyle" selected="0">Budget</option>
+                                    <option id="travelstyle">Midrange</option>
+                                    <option id="travelstyle">Luxury</option>
+                                </select>
+                            </div>
+                    <!-- class currency-button -->
+                            <div class="currency-button text-primary">
+                                <h5>Currency Converter</h5>
+                                    <select class="browser-default custom-select currency">
+                        <!-- Possible to add a dynamically created options of currencies? -->
+                                    <option selected="0">USD</option>
+                                    <option value="1">EUR</option>
+                                </select>
+                            </div>
+                        </div>
+                </div>
+            </div>
+                    <br>
+                    <br>
         <div class="container">
             <div class="row justify-content-center">
                 <br>
                 <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
                     <div class="attractions">
-                        <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
-                        <div class="card-header"> Attractions </div>
+                        <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-white bg-primary"> Attractions </div>
                             <div class="card-body">
                                 <h3 class="card-title"></h3>
                                 <p class="card-text-price"><span><ul><li id="attractionTxt"></li></ul></span></p>
@@ -160,19 +151,19 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
                     <div class="transportation">
-                        <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
-                            <div class="card-header"> Transportation </div>
+                        <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header text-white bg-primary"> Transportation </div>
                                 <div class="card-body">
                                     <h3 class="card-title"></h3>
-                                    <p class="card-text-price"><ul id="budgt-txt"><li id="transportTxt"></li></ul></p>
+                                    <p class="card-text-black"><ul id="budgt-txt"><li id="transportTxt"></li></ul></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
                     <div class="enterainment">
-                        <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
-                            <div class="card-header"> Entertainment </div>
+                        <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header text-white bg-primary"> Entertainment </div>
                                 <div class="card-body">
                                     <h3 class="card-title"></h3>
                                     <p class="card-text-price"><ul id="budgt-txt"><li id="entertainTxt"></li></ul></p>
@@ -182,8 +173,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-3 text-center"> 
                     <div class="alcohol">
-                        <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
-                            <div class="card-header"> Alcohol </div>
+                        <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header text-white bg-primary"> Water </div>
                                 <div class="card-body">
                                     <h3 class="card-title"></h3>
                                     <p class="card-text-price"><ul id="budgt-txt"><li id="alcoholTxt"></li></ul></p>
@@ -195,6 +186,24 @@
         </div>
     <br>   
     <br>
+    <br>
+</div>   
+        <!-- search bar simple for emergency -->
+        <!-- <img src="assets/images/Destination Button-01.png" class="destination-button"> -->
+    <!-- line breaks used to help fit the background-image as the jumbotron otherwise wouldnt fit -->
+    <!-- <p>
+        <p>
+            <div class="dropdown">
+                <button class="btn bg-primary dropdown-toggle" type="button" id="submit" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" style="width: 18rem;">
+                    Search
+                </button>
+            <div id="menu" class="dropdown-menu">
+                <form class="px-4 py-2">
+                    <input type="search" class="form-control dropdown-toggle"  autofocus="autofocus">
+            </div>
+        </p> -->
+<!-- </div> -->
 
 
     <script src="assets/javascript/app.js"></script>
