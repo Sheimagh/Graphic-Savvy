@@ -53,10 +53,10 @@ $(document).ready(function(){
           // Weather --------------------------------------------------------------------
 
           // url with API key to retreive forecast, city as variable and units fixed as imperial
-          var weather = "https://api.openweathermap.org/data/2.5/forecast?q="+encodeURIComponent(input)+"&units=imperial&APPID=2c5299d78f7bf581a1a4bccad14eaddf";
+          var weather = "https://api.openweathermap.org/data/2.5/forecast?id="+encodeURIComponent(input)+"&units=imperial&APPID=2c5299d78f7bf581a1a4bccad14eaddf";
           
           // universal array to alocate today and next days of the week
-          var week = [];
+          var week = [moment().format('ll'),moment().add(1, 'days').format('ll'),moment().add(2, 'days').format('ll'),moment().add(3, 'days').format('ll'),moment().add(4, 'days').format('ll')];
 
           // Ajax call for weather API
           $.ajax({
@@ -77,34 +77,6 @@ $(document).ready(function(){
 
       })
 
-            // get current day and determine next days in order
-              var d = new Date();
-              var n = d.getDay();
-
-                // depending current day, use corresponding week array
-                  switch(n) {
-                  case 0:
-                      week = ["Sunday", "Monday",  "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-                  break
-                  case 1:
-                      week = ["Monday",  "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-                  break
-                  case 2: 
-                      week = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday"]
-                  break
-                  case 3: 
-                      week = ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday",  "Tuesday"]
-                  break
-                  case 4: 
-                      week = ["Thursday", "Friday", "Saturday", "Sunday", "Monday",  "Tuesday", "Wednesday"]
-                  break
-                  case 5:
-                      week = ["Friday", "Saturday", "Sunday", "Monday",  "Tuesday", "Wednesday", "Thursday"]
-                  break
-                  case 6:
-                  week = ["Saturday", "Sunday", "Monday",  "Tuesday", "Wednesday", "Thursday", "Friday"]
-                  break
-              } 
           })
 
 
